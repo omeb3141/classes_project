@@ -159,12 +159,15 @@ class MahaStudent():
 class MahaElintStudent(MahaStudent):
     def __init__(self, full_name, id, mail, recruit_date):
         super().__init__(full_name, id, mail, recruit_date, "Elint")
+        self.list_of_samples = []
+    def add_sample(self, sample):
+        if type(sample) == str:
+            self.list_of_samples.append(sample)
+        else:
+            print("Only strings")
+
+    @property
+    def List_Of_Samples(self):
+        return self.list_of_samples
 
 
-
-
-
-m1 = MahaStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19", "Elint")
-m1.Mail="omerbahir10@gmail.c.om"
-print(m1.get_pazam())
-MahaStudent("O m er Bahir", 5437000421, "omerbahir10@gmail.c.om", "2025-07-19", "Erint")
