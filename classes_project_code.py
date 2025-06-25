@@ -171,3 +171,11 @@ class MahaElintStudent(MahaStudent):
         return self.list_of_samples
 
 
+m2 = MahaElintStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19")
+m2.add_sample("gitit")
+print(m2.List_Of_Samples)
+
+m1 = MahaStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19", "Elint")
+m1.Mail="omerbahir10@gmail.c.om"
+print(m1.get_pazam())
+MahaStudent("O m er Bahir", 5437000421, "omerbahir10@gmail.c.om", "2025-07-19", "Erint")
