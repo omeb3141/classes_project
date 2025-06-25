@@ -16,17 +16,14 @@ class MahaStudent():
             self.full_name = full_name
         else:
             print("illegal name")
-            self.full_name = "No"
         if MahaStudent.checking_correct_id(id):
             self.id = id
         else:
             print("illegal id")
-            self.id = 0
         if MahaStudent.checking_correct_mail(mail):
             self.mail = mail
         else:
             print("illegal mail")
-            self.mail = "No"
         if MahaStudent.checking_correct_date(recruit_date):
             self.recruit_date = "0000-01-01"
         else:
@@ -35,7 +32,6 @@ class MahaStudent():
             self.profession = MahaProfession(profession)
         else:
             print("illegal profession")
-            self.profession = "No"
         MahaStudent.total_students_number += 1
 
     @classmethod
@@ -170,3 +166,6 @@ class MahaElintStudent(MahaStudent):
     @property
     def List_Of_Samples(self):
         return self.list_of_samples
+
+m2 = MahaElintStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19")
+print(MahaStudent.total_students())
