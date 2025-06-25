@@ -2,6 +2,7 @@ from enum import Enum
 from datetime import date
 from datetime import datetime
 
+
 class MahaProfession(Enum):
     elint = "Elint"
     commint = "Commint"
@@ -117,7 +118,6 @@ class MahaStudent():
                 return True
         return False
 
-
     @staticmethod
     def checking_correct_profession(profession):
         if profession in MahaProfession._value2member_map_:
@@ -137,6 +137,13 @@ class MahaStudent():
     def Mail(self):
         return self.mail
 
+    @Mail.setter
+    def Mail(self, value):
+        if MahaStudent.checking_correct_mail(value):
+            self.mail = value
+        else:
+            print("illegal mail")
+
     @property
     def Recruit_Date(self):
         return self.recruit_date
@@ -146,10 +153,18 @@ class MahaStudent():
         return self.profession
 
     def get_pazam(self):
-        return date.today()- datetime.strptime(self.recruit_date, '%Y-%m-%d').date()
+        return date.today() - datetime.strptime(self.recruit_date, '%Y-%m-%d').date()
+
+
+class MahaElintStudent(MahaStudent):
+    def __init__(self, full_name, id, mail, recruit_date):
+        super().__init__(full_name, id, mail, recruit_date, "Elint")
+
+
+
 
 
 m1 = MahaStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19", "Elint")
+m1.Mail="omerbahir10@gmail.c.om"
 print(m1.get_pazam())
-
 MahaStudent("O m er Bahir", 5437000421, "omerbahir10@gmail.c.om", "2025-07-19", "Erint")
