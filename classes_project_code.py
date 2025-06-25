@@ -29,12 +29,22 @@ def checking_correct_condition(string_id):
 def checking_correct_full_name(full_name):
     if len(full_name) == 0:
         return False
-    counter_space = 0
+    nums_of_space = 0
+    counter_space = 10
     for a in range(0, len(full_name)):
-        if full_name[a] == 0:
+        if full_name[a] == " ":
+            print(a, counter_space)
             if counter_space < 2:
                 return False
+            counter_space = 0
+            nums_of_space += 1
+        elif is_char_english(full_name[a]):
             counter_space += 1
+        else:
+            return False
+    if nums_of_space > 0:
+        return True
+    return False
 
 def is_char_english(char_eng):
     if 'a' <= char_eng <= 'z':
