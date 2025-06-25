@@ -77,7 +77,7 @@ class MahaStudent():
     @staticmethod
     def checking_correct_mail(mail):
         if mail.count("@") == 1 and mail.count('.') == 1:
-            if mail.index("@") < mail.index(".") and mail.index(".")!=0 and mail.index("@")!= len(mail)-1:
+            if mail.index("@") < mail.index(".") != len(mail) - 1 and mail.index("@") != 0:
                 return True
         return False
 
@@ -160,6 +160,7 @@ class MahaElintStudent(MahaStudent):
     def __init__(self, full_name, id, mail, recruit_date):
         super().__init__(full_name, id, mail, recruit_date, "Elint")
         self.list_of_samples = []
+
     def add_sample(self, sample):
         if type(sample) == str:
             self.list_of_samples.append(sample)
@@ -169,6 +170,3 @@ class MahaElintStudent(MahaStudent):
     @property
     def List_Of_Samples(self):
         return self.list_of_samples
-
-
-
