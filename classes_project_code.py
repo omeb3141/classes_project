@@ -12,6 +12,7 @@ class MahaStudent():
     total_students_number = 0
 
     def __init__(self, full_name, id, mail, recruit_date, profession):
+        MahaStudent.total_students_number += 1
         if MahaStudent.checking_correct_full_name(full_name):
             self.full_name = full_name
         else:
@@ -32,7 +33,6 @@ class MahaStudent():
             self.profession = MahaProfession(profession)
         else:
             print("illegal profession")
-        MahaStudent.total_students_number += 1
 
     @classmethod
     def total_students(cls):
