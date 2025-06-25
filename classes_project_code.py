@@ -61,7 +61,6 @@ class MahaStudent():
         counter_space = 10
         for a in range(0, len(full_name)):
             if full_name[a] == " ":
-                print(a, counter_space)
                 if counter_space < 2:
                     return False
                 counter_space = 0
@@ -121,7 +120,7 @@ class MahaStudent():
 
     @staticmethod
     def checking_correct_profession(profession):
-        if profession in MahaProfession:
+        if profession in MahaProfession._value2member_map_:
             return True
         else:
             return False
@@ -146,6 +145,11 @@ class MahaStudent():
     def Profession(self):
         return self.profession
 
+    def get_pazam(self):
+        return date.today()- datetime.strptime(self.recruit_date, '%Y-%m-%d').date()
 
 
+m1 = MahaStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19", "Elint")
+print(m1.get_pazam())
 
+MahaStudent("O m er Bahir", 5437000421, "omerbahir10@gmail.c.om", "2025-07-19", "Erint")
