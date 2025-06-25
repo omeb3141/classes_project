@@ -26,7 +26,11 @@ class MahaStudent():
         else:
             print("illegal mail")
             self.mail = "No"
-        self.recruit_date = recruit_date
+        if MahaStudent.checking_correct_date(recruit_date):
+            self.recruit_date = recruit_date
+        else:
+            print("illegal recruit date")
+
         self.profession = MahaProfession(profession)
         MahaStudent.total_students_number += 1
 
@@ -96,6 +100,21 @@ class MahaStudent():
         id_string = "0" * (9 - len(id_string)) + id_string
         return MahaStudent.checking_correct_condition(id_string)
 
+    @staticmethod
+    def date_is_legal(date_str):
+        try:
+            datetime.strptime(date_str, '%Y-%m-%d').date()
+            return True
+        except:
+            return False
+
+    @staticmethod
+    def checking_correct_date(date_str):
+        if MahaStudent.date_is_legal(date_str):
+            if datetime.strptime(date_str, '%Y-%m-%d').date() <= date.today():
+                return True
+        return False
+
     @property
     def Full_Name(self):
         return self.full_name
@@ -139,9 +158,8 @@ def is_date_correct(date_given):
         return 0
 
 
-def date_is_legal(date_str):
-    try:
-        datetime.strptime(date_str, '%Y-%m-%d').date()
-        return True
-    except:
-        return False
+
+
+
+
+print(datetime.strptime("2025-06-25", '%Y-%m-%d').date() <= date.today())
