@@ -46,6 +46,12 @@ class MahaStudent():
         if nums_of_space > 0:
             return True
         return False
+    @staticmethod
+    def checking_correct_mail(mail):
+        if mail.count("@") == 1 and mail.count('.') == 1:
+            if mail.index("@") < mail.index("."):
+                return True
+        return False
 
 def checking_correct_condition(string_id):
     sum1 = 0
@@ -59,7 +65,5 @@ def checking_correct_condition(string_id):
         else:
             sum1 += int(string_id[i])
     return min(10-(sum1%10), (sum1%10)) == int(string_id[-1])
-
-def checking_correct_mail():
 
 
