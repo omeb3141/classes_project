@@ -30,8 +30,11 @@ class MahaStudent():
             self.recruit_date = recruit_date
         else:
             print("illegal recruit date")
-
-        self.profession = MahaProfession(profession)
+        if MahaStudent.checking_correct_profession(profession):
+            self.profession = MahaProfession(profession)
+        else:
+            print("illegal profession")
+            self.profession = "No"
         MahaStudent.total_students_number += 1
 
     @classmethod
@@ -115,6 +118,14 @@ class MahaStudent():
                 return True
         return False
 
+
+    @staticmethod
+    def checking_correct_profession(profession):
+        if profession in MahaProfession:
+            return True
+        else:
+            return False
+
     @property
     def Full_Name(self):
         return self.full_name
@@ -136,30 +147,5 @@ class MahaStudent():
         return self.profession
 
 
-print(date.today())
-d1 = date(1, 2, 3)
-print(date.today() - d1)
 
 
-def string_is_all_digits(string_sus):
-    return all(a.isdigit() for a in string_sus)
-
-
-def is_date_correct(date_given):
-    date_list = date_given.split('.')
-    if len(date_given) != 3:
-        return False
-    for st in date_list:
-        if not string_is_all_digits(st):
-            return False
-    if not 0 < int(date_list[1]) < 13:
-        return False
-    if not 0 < int(date_list[1]) < 13:
-        return 0
-
-
-
-
-
-
-print(datetime.strptime("2025-06-25", '%Y-%m-%d').date() <= date.today())
