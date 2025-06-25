@@ -28,7 +28,7 @@ class MahaStudent():
             print("illegal mail")
             self.mail = "No"
         if MahaStudent.checking_correct_date(recruit_date):
-            self.recruit_date = recruit_date
+            self.recruit_date = "0000-01-01"
         else:
             print("illegal recruit date")
         if MahaStudent.checking_correct_profession(profession):
@@ -59,15 +59,15 @@ class MahaStudent():
         if len(full_name) == 0:
             return False
         nums_of_space = 0
-        counter_space = 10
+        counter_space_to_space_distance = 10
         for a in range(0, len(full_name)):
             if full_name[a] == " ":
-                if counter_space < 2:
+                if counter_space_to_space_distance < 2:
                     return False
-                counter_space = 0
+                counter_space_to_space_distance = 0
                 nums_of_space += 1
             elif MahaStudent.is_char_english(full_name[a]):
-                counter_space += 1
+                counter_space_to_space_distance += 1
             else:
                 return False
         if nums_of_space > 0:
@@ -77,12 +77,12 @@ class MahaStudent():
     @staticmethod
     def checking_correct_mail(mail):
         if mail.count("@") == 1 and mail.count('.') == 1:
-            if mail.index("@") < mail.index("."):
+            if mail.index("@") < mail.index(".") and mail.index(".")!=0 and mail.index("@")!= len(mail)-1:
                 return True
         return False
 
     @staticmethod
-    def checking_correct_condition(string_id):
+    def checking_correct_condition_for_id(string_id):
         sum1 = 0
         for i in range(0, len(string_id) - 1):
             if i % 2 == 1:
@@ -101,7 +101,7 @@ class MahaStudent():
         if len(id_string) > 9:
             return False
         id_string = "0" * (9 - len(id_string)) + id_string
-        return MahaStudent.checking_correct_condition(id_string)
+        return MahaStudent.checking_correct_condition_for_id(id_string)
 
     @staticmethod
     def date_is_legal(date_str):
@@ -171,11 +171,4 @@ class MahaElintStudent(MahaStudent):
         return self.list_of_samples
 
 
-m2 = MahaElintStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19")
-m2.add_sample("gitit")
-print(m2.List_Of_Samples)
 
-m1 = MahaStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19", "Elint")
-m1.Mail="omerbahir10@gmail.c.om"
-print(m1.get_pazam())
-MahaStudent("O m er Bahir", 5437000421, "omerbahir10@gmail.c.om", "2025-07-19", "Erint")
