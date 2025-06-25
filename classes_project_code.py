@@ -1,5 +1,6 @@
 from enum import Enum
-
+from datetime import date
+from datetime import datetime
 
 class MahaProfession(Enum):
     elint = "Elint"
@@ -10,11 +11,23 @@ class MahaStudent():
     total_students_number = 0
 
     def __init__(self, full_name, id, mail, recruit_date, profession):
-        self.full_name = full_name
-        self.id = id
-        self.mail = mail
+        if MahaStudent.checking_correct_full_name(full_name):
+            self.full_name = full_name
+        else:
+            print("illegal name")
+            self.full_name = "No"
+        if MahaStudent.checking_correct_id(id):
+            self.id = id
+        else:
+            print("illegal id")
+            self.id = 0
+        if MahaStudent.checking_correct_mail(mail):
+            self.mail = mail
+        else:
+            print("illegal mail")
+            self.mail = "No"
         self.recruit_date = recruit_date
-        self.profession = profession
+        self.profession = MahaProfession(profession)
         MahaStudent.total_students_number += 1
 
     @classmethod
@@ -83,6 +96,52 @@ class MahaStudent():
         id_string = "0" * (9 - len(id_string)) + id_string
         return MahaStudent.checking_correct_condition(id_string)
 
+    @property
+    def Full_Name(self):
+        return self.full_name
+
+    @property
+    def Id(self):
+        return self.id
+
+    @property
+    def Mail(self):
+        return self.mail
+
+    @property
+    def Recruit_Date(self):
+        return self.recruit_date
+
+    @property
+    def Profession(self):
+        return self.profession
 
 
+print(date.today())
+d1 = date(1, 2, 3)
+print(date.today() - d1)
 
+
+def string_is_all_digits(string_sus):
+    return all(a.isdigit() for a in string_sus)
+
+
+def is_date_correct(date_given):
+    date_list = date_given.split('.')
+    if len(date_given) != 3:
+        return False
+    for st in date_list:
+        if not string_is_all_digits(st):
+            return False
+    if not 0 < int(date_list[1]) < 13:
+        return False
+    if not 0 < int(date_list[1]) < 13:
+        return 0
+
+
+def date_is_legal(date_str):
+    try:
+        datetime.strptime(date_str, '%Y-%m-%d').date()
+        return True
+    except:
+        return False
