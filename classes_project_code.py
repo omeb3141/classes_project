@@ -25,3 +25,20 @@ def checking_correct_condition(string_id):
         else:
             sum1 += int(string_id[i])
     return min(10-(sum1%10), (sum1%10)) == int(string_id[-1])
+
+def checking_correct_full_name(full_name):
+    if len(full_name) == 0:
+        return False
+    counter_space = 0
+    for a in range(0, len(full_name)):
+        if full_name[a] == 0:
+            if counter_space < 2:
+                return False
+            counter_space += 1
+
+def is_char_english(char_eng):
+    if 'a' <= char_eng <= 'z':
+        return True
+    if 'A' <= char_eng <= 'Z':
+        return True
+    return False
