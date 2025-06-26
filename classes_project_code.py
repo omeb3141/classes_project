@@ -26,7 +26,7 @@ class MahaStudent():
         else:
             raise ValueError('illegal mail')
         if MahaStudent.checking_correct_date(recruit_date):
-            self.recruit_date = "0000-01-01"
+            self.recruit_date = recruit_date
         else:
             raise ValueError("illegal recruit date")
         if MahaStudent.checking_correct_profession(profession):
