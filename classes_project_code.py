@@ -16,23 +16,24 @@ class MahaStudent():
         if MahaStudent.checking_correct_full_name(full_name):
             self.full_name = full_name
         else:
-            print("illegal name")
+            raise ValueError('illegal name')
         if MahaStudent.checking_correct_id(id):
             self.id = id
         else:
-            print("illegal id")
+            raise ValueError('illegal id')
         if MahaStudent.checking_correct_mail(mail):
             self.mail = mail
         else:
-            print("illegal mail")
+            raise ValueError('illegal mail')
         if MahaStudent.checking_correct_date(recruit_date):
             self.recruit_date = "0000-01-01"
         else:
-            print("illegal recruit date")
+            raise ValueError("illegal recruit date")
         if MahaStudent.checking_correct_profession(profession):
             self.profession = MahaProfession(profession)
         else:
-            print("illegal profession")
+            raise ValueError("illegal profession")
+
 
     @classmethod
     def total_students(cls):
@@ -167,5 +168,3 @@ class MahaElintStudent(MahaStudent):
     def List_Of_Samples(self):
         return self.list_of_samples
 
-m2 = MahaElintStudent("Omer Bahir", 543700421, "omerbahir10@gmail.com", "2025-03-19")
-print(MahaStudent.total_students())
